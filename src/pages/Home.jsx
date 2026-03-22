@@ -13,6 +13,7 @@ function Home() {
           
           <nav className="hidden md:flex gap-8 items-center">
             <a className="font-['Manrope'] tracking-tight font-bold text-blue-400 border-b-2 border-blue-400 pb-1" href="#features">Features</a>
+            <Link className="font-['Manrope'] tracking-tight font-bold text-zinc-400 hover:text-white transition-colors" to="/portfolio">Our Work</Link>
             <a className="font-['Manrope'] tracking-tight font-bold text-zinc-400 hover:text-white transition-colors" href="#why-rent">Why Rent?</a>
             <a className="font-['Manrope'] tracking-tight font-bold text-zinc-400 hover:text-white transition-colors" href="#growth-hub">Growth Hub</a>
             <a className="font-['Manrope'] tracking-tight font-bold text-zinc-400 hover:text-white transition-colors" href="#pricing">Pricing</a>
@@ -33,6 +34,7 @@ function Home() {
         {isMobileMenuOpen && (
           <div className="md:hidden absolute top-20 left-0 w-full bg-zinc-950 border-t border-outline-variant/10 shadow-2xl flex flex-col p-6 gap-6 h-[calc(100vh-80px)] overflow-y-auto">
             <a onClick={() => setIsMobileMenuOpen(false)} className="font-manrope text-lg font-bold text-white border-b border-outline-variant/10 pb-4" href="#features">Features</a>
+            <Link onClick={() => setIsMobileMenuOpen(false)} className="font-manrope text-lg font-bold text-white border-b border-outline-variant/10 pb-4" to="/portfolio">Our Work</Link>
             <a onClick={() => setIsMobileMenuOpen(false)} className="font-manrope text-lg font-bold text-white border-b border-outline-variant/10 pb-4" href="#why-rent">Why Rent?</a>
             <a onClick={() => setIsMobileMenuOpen(false)} className="font-manrope text-lg font-bold text-white border-b border-outline-variant/10 pb-4" href="#growth-hub">Growth Hub</a>
             <a onClick={() => setIsMobileMenuOpen(false)} className="font-manrope text-lg font-bold text-white border-b border-outline-variant/10 pb-4" href="#pricing">Pricing</a>
