@@ -11,7 +11,8 @@ const ContactUs = () => {
     e.preventDefault();
     setStatus('submitting');
     try {
-      const response = await fetch('/api/contact', {
+      const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
+      const response = await fetch(`${API_BASE}/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
