@@ -11,6 +11,10 @@ const ContactUs = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.email.trim() && !formData.phone.trim()) {
+      alert("Please provide either your Email Address or Phone Number so we can reach you.");
+      return;
+    }
     setStatus('submitting');
     try {
       const API_BASE = import.meta.env.VITE_API_BASE_URL ?? 'https://brandnify-backend.vercel.app/api';
@@ -111,15 +115,15 @@ const ContactUs = () => {
                     className="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-3 text-white placeholder-zinc-600 focus:border-primary focus:outline-none text-sm transition-colors" />
                 </div>
                 <div>
-                  <label className="block text-xs text-on-surface-variant mb-1.5 font-semibold uppercase tracking-wider">Phone / WhatsApp *</label>
-                  <input required name="phone" value={formData.phone} onChange={handleChange} placeholder="+91 98765 43210" type="tel"
+                  <label className="block text-xs text-on-surface-variant mb-1.5 font-semibold uppercase tracking-wider">Phone / WhatsApp</label>
+                  <input name="phone" value={formData.phone} onChange={handleChange} placeholder="+91 98765 43210" type="tel"
                     className="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-3 text-white placeholder-zinc-600 focus:border-primary focus:outline-none text-sm transition-colors" />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs text-on-surface-variant mb-1.5 font-semibold uppercase tracking-wider">Email Address *</label>
-                <input required type="email" name="email" value={formData.email} onChange={handleChange} placeholder="you@yourbrand.com"
+                <label className="block text-xs text-on-surface-variant mb-1.5 font-semibold uppercase tracking-wider">Email Address</label>
+                <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="you@yourbrand.com"
                   className="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-3 text-white placeholder-zinc-600 focus:border-primary focus:outline-none text-sm transition-colors" />
               </div>
 

@@ -1,23 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Home() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <div className="bg-background text-on-background selection:bg-primary-container selection:text-on-primary-container font-body min-h-screen">
       {/* TopAppBar */}
       <header className="fixed top-0 w-full z-50 dark:bg-zinc-950/80 backdrop-blur-2xl no-border tonal-shift shadow-2xl shadow-blue-500/5">
-        <div className="flex justify-between items-center px-8 h-20 max-w-7xl mx-auto">
+        <div className="flex justify-between items-center px-6 md:px-8 h-20 max-w-7xl mx-auto">
           <div className="text-2xl font-black tracking-[-0.04em] text-white font-manrope">Brandnify</div>
+          
           <nav className="hidden md:flex gap-8 items-center">
             <a className="font-['Manrope'] tracking-tight font-bold text-blue-400 border-b-2 border-blue-400 pb-1" href="#features">Features</a>
             <a className="font-['Manrope'] tracking-tight font-bold text-zinc-400 hover:text-white transition-colors" href="#why-rent">Why Rent?</a>
             <a className="font-['Manrope'] tracking-tight font-bold text-zinc-400 hover:text-white transition-colors" href="#growth-hub">Growth Hub</a>
             <a className="font-['Manrope'] tracking-tight font-bold text-zinc-400 hover:text-white transition-colors" href="#pricing">Pricing</a>
           </nav>
-          <Link to="/contact" className="inline-block bg-gradient-to-r from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-md font-bold tracking-tight scale-95 active:scale-90 transition-transform hover:opacity-80">
-            Start Your 24-hr Launch
-          </Link>
+          
+          <div className="hidden md:block">
+            <Link to="/contact" className="inline-block bg-gradient-to-r from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-md font-bold tracking-tight scale-95 active:scale-90 transition-transform hover:opacity-80">
+              Contact Us
+            </Link>
+          </div>
+
+          <button className="md:hidden text-zinc-300 p-2" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+            <span className="material-symbols-outlined text-3xl">{isMobileMenuOpen ? 'close' : 'menu'}</span>
+          </button>
         </div>
+
+        {/* Mobile Nav Overlay */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden absolute top-20 left-0 w-full bg-zinc-950 border-t border-outline-variant/10 shadow-2xl flex flex-col p-6 gap-6 h-[calc(100vh-80px)] overflow-y-auto">
+            <a onClick={() => setIsMobileMenuOpen(false)} className="font-manrope text-lg font-bold text-white border-b border-outline-variant/10 pb-4" href="#features">Features</a>
+            <a onClick={() => setIsMobileMenuOpen(false)} className="font-manrope text-lg font-bold text-white border-b border-outline-variant/10 pb-4" href="#why-rent">Why Rent?</a>
+            <a onClick={() => setIsMobileMenuOpen(false)} className="font-manrope text-lg font-bold text-white border-b border-outline-variant/10 pb-4" href="#growth-hub">Growth Hub</a>
+            <a onClick={() => setIsMobileMenuOpen(false)} className="font-manrope text-lg font-bold text-white border-b border-outline-variant/10 pb-4" href="#pricing">Pricing</a>
+            <Link onClick={() => setIsMobileMenuOpen(false)} to="/contact" className="mt-4 text-center bg-primary text-on-primary py-4 rounded-md font-bold transition-opacity hover:opacity-90">
+              Contact Us
+            </Link>
+          </div>
+        )}
       </header>
 
       <main className="pt-20">
@@ -46,9 +69,9 @@ function Home() {
               <Link to="/contact" className="w-full md:w-auto px-8 py-4 bg-primary text-on-primary font-bold rounded-md shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all text-center">
                 Claim Your Brand in 24 Hours
               </Link>
-              <Link to="/contact" className="w-full md:w-auto px-8 py-4 bg-transparent border border-outline-variant text-primary font-bold rounded-md hover:bg-surface-container-high transition-colors text-center">
+              <a href="#pricing" className="w-full md:w-auto px-8 py-4 bg-transparent border border-outline-variant text-primary font-bold rounded-md hover:bg-surface-container-high transition-colors text-center">
                 Explore Tier Comparison
-              </Link>
+              </a>
             </div>
           </div>
         </section>
@@ -269,8 +292,8 @@ function Home() {
           <div>
             <h4 className="text-white font-semibold mb-6 font-manrope">Resources</h4>
             <div className="flex flex-col gap-4">
-              <a className="font-['Inter'] text-sm tracking-wide leading-relaxed text-zinc-500 hover:text-blue-400 transition-colors hover:translate-x-1 transition-transform duration-200" href="#">SME Growth Resources</a>
-              <a className="font-['Inter'] text-sm tracking-wide leading-relaxed text-zinc-500 hover:text-blue-400 transition-colors hover:translate-x-1 transition-transform duration-200" href="#">Contact Support</a>
+              {/* <a className="font-['Inter'] text-sm tracking-wide leading-relaxed text-zinc-500 hover:text-blue-400 transition-colors hover:translate-x-1 transition-transform duration-200" href="#">SME Growth Resources</a> */}
+              <Link to="/contact" className="font-['Inter'] text-sm tracking-wide leading-relaxed text-zinc-500 hover:text-blue-400 transition-colors hover:translate-x-1 transition-transform duration-200">Contact Support</Link>
               <a className="font-['Inter'] text-sm tracking-wide leading-relaxed text-zinc-500 hover:text-blue-400 transition-colors hover:translate-x-1 transition-transform duration-200" href="#">Privacy Policy</a>
             </div>
           </div>
